@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import time as ts
+
 table=pd.DataFrame({"Col1":[1,2,3,4],"Col2":[5,6,7,8]})
 st.metric(label="WindSpeed", value="120ms⁻¹" ,delta= "1.4ms⁻¹ ")
 st.metric(label="WindSpeed", value="120ms⁻¹" ,delta= "-1.4ms⁻¹ ")
@@ -16,8 +18,9 @@ st.audio("audio.mp3")
 st.video("video.mp4")
 
 st.write("---")
-# interactive widgets
-# CHECKBOXES
+
+# INTERACTIVE WIDGETS
+# # CHECKBOXES
 st.write("CHECKBOXES")
 st.checkbox("To do one")
 st.checkbox("To do two")
@@ -53,3 +56,27 @@ print(select)
 multi_select=st.multiselect("Favourite Sport", options= ("Badminton", "Tennis", "Cricket", "Chess"))
 print(multi_select)
 st.write(multi_select)
+
+# slider
+s_val=st.slider("How's the energy today?")
+print(s_val)
+st.slider("Rate the weather", min_value=0, max_value=5)
+st.slider("Another slider", min_value=10, max_value=20, value=17)
+
+# text 
+text1=st.text_input("Enter name")
+print(text1)
+text2=st.text_input("Enter Course title", max_chars=10)
+print(text2)
+text3=st.text_area("Enter course description")
+print(text3)
+# Date and time
+text4=st.date_input("Enter registration date")
+print(text4)
+text5=st.time_input("Set timer")
+print(text5)
+# progress bar
+bar=st.progress(0)
+for i in range(10):
+    bar.progress((i+1)*10)
+    ts.sleep(1)
